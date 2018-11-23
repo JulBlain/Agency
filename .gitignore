@@ -20,6 +20,7 @@
 .env*
 .env.test
 composer.lock
+phpunit.xml.dist
 config
 /config
 
