@@ -41,6 +41,17 @@ class PropertyRepository extends ServiceEntityRepository
                 ->andWhere('p.surface >= :minsurface')
                 ->setParameter('minsurface', $search->getMinSurface());
         }
+
+        if ($search->getOptions()->count() > 0) {
+            //double cote avec la clé pour pas que l'option soit ecrasée, ne pas faire confiance à $k, donc on l'incremente
+            $k = 0;
+            foreach ($search->getOptions() as $option) {
+                $k++;
+                $query = $query
+                    ->andWhere(":option$k MEMBER OF p.options")
+                    ->setParameter("option$k", $option);
+            }
+        }
         //objet qui represente une requete avec un alias
         return $query->getQuery();
 

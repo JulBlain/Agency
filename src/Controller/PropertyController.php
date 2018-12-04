@@ -46,6 +46,7 @@ class PropertyController extends AbstractController
     {
         $search = new PropertySearch();
         $form = $this->createForm(PropertySearchType::class, $search);
+
         $form->handleRequest($request);
         //gerer le traitement dans le controller
 
