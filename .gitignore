@@ -25,4 +25,8 @@ config
 /config
 
 config/*
+public/images
 
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
